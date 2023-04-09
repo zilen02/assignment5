@@ -1,34 +1,47 @@
 <div class="row">
   <div class="col-md-12">
     <br />
-    <h2>Courses</h2>
+    <h2>Courses
+      <a href="/coursess/add" class="btn btn-success float-right">Add New Course</a>
+    </h2>
     <hr />
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Course Code</th>
-          <th scope="col">Course Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each courses}}
+    {{#if courses}}
+      <table class="table">
+        <thead>
           <tr>
-            <td>
-              <a href="/courses/{{courseId}}">
-                {{courseCode}}
-              </a>
-            </td>
-            <td>
-              <a href="/students/{{courseId}}">
-                {{courseDescription}}
-              </a>
-
-            </td>
+            <th scope="col">Course Code</th>
+            <th scope="col">Course Description</th>
+            <th scope="col">Delete</th>
           </tr>
-        {{/each}}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {{#each courses}}
+            <tr>
+              <td>
+                <a href="/courses/{{courseId}}">
+                  {{courseCode}}
+                </a>
+              </td>
+              <td>
+                <a href="/students/{{courseId}}">
+                  {{courseDescription}}
+                </a>
+              </td>
+              <td>
+                <a
+                  type="button"
+                  class="btn btn-danger"
+                  href="/course/delete/{{courseId}}"
+                >
+                  Remove
+                </a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/if}}
 
     {{#unless courses}}
       <div class="col-md-12 text-center">

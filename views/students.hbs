@@ -1,50 +1,65 @@
 <div class="row">
   <div class="col-md-12">
     <br />
-    <h2>Students</h2>
+    <h2>Students
+      <a href="/studentss/add" class="btn btn-success float-right">Add New
+        Student</a>
+    </h2>
     <hr />
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Student Num</th>
-          <th scope="col">Full Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Address</th>
-          <th scope="col">Status</th>
-          <th scope="col">Course ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each students}}
+    {{#if students}}
+      <table class="table">
+        <thead>
           <tr>
-            <td>
-              {{studentNum}}
-            </td>
-            <td>
-              <a href="/student/{{studentNum}}">
-                {{firstName}}
-                {{lastName}}
-              </a>
-            </td>
-            <td>
-              <a href="mailto:{{email}}">{{email}}</a>
-            </td>
-            <td>
-              {{addressStreet}}
-            </td>
-            <td>
-              {{status}}
-            </td>
-            <td>
-              <a href="/students/{{course}}">
-                {{course}}
-              </a>
-            </td>
+            <th scope="col">Student Num</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Status</th>
+            <th scope="col">Course ID</th>
+            <th scope="col">Delete</th>
           </tr>
-        {{/each}}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {{#each students}}
+            <tr>
+              <td>
+                {{studentNum}}
+              </td>
+              <td>
+                <a href="/student/{{studentNum}}">
+                  {{firstName}}
+                  {{lastName}}
+                </a>
+              </td>
+              <td>
+                <a href="mailto:{{email}}">{{email}}</a>
+              </td>
+              <td>
+                {{addressStreet}}
+              </td>
+              <td>
+                {{status}}
+              </td>
+              <td>
+                <a href="/students/{{course}}">
+                  {{course}}
+                </a>
+              </td>
+              <td>
+                <a
+                  type="button"
+                  class="btn btn-danger"
+                  href="/student/delete/{{studentNum}}"
+                >
+                  Remove
+                </a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/if}}
 
     {{#unless students}}
       <div class="col-md-12 text-center">
